@@ -1,0 +1,11 @@
+node_modules/
+dist/
+release/
+build/
+iskoni-backups/
+backup/
+*.pkg
+*.dmg
+*.zip
+*.tar.gz
+.DS_Store

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<script>try { localStorage.setItem('iskoni_default_server', 'Orion'); } catch(_) {}</script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ISKONI</title>
+    <script type="module" crossorigin src="./assets/index-CbC-ZPCs.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DJdcwg7g.css">
+  <style>
+  ::-webkit-scrollbar {
+    width: 0px !important;
+    height: 0px !important;
+    display: none !important;
+  }
+  * {
+    scrollbar-width: none !important;
+  }
+</style>
+</head>
+  <body class="bg-[#0f1014] text-white">
+    <div id="root"></div>
+  
+  
+
+
+  
+
+
+  
+
+
+<style>
+  /* Prevent top clipping on card hover */
+  .overflow-x-auto {
+    padding-top: 10px !important;
+    padding-bottom: 14px !important;
+  }
+
+  /* 3-Dot Button on Card */
+  .iskoni-card-dot-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.15s ease, transform 0.15s ease, background 0.15s ease;
+    z-index: 100;
+  }
+  .group:hover .iskoni-card-dot-btn { opacity: 1; }
+  .iskoni-card-dot-btn:hover { background: rgba(0, 0, 0, 0.95); transform: scale(1.1); }
+
+  /* Context Menu Popup */
+  #iskoni-context-popup {
+    position: fixed;
+    width: 195px;
+    background: #141418;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 8px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.95);
+    padding: 6px;
+    z-index: 9999999;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .iskoni-popup-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 8px 12px;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    color: #e5e7eb;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.12s ease;
+  }
+  .iskoni-popup-btn:hover { background: rgba(255, 255, 255, 0.09); }
+  .iskoni-popup-btn.danger { color: #ef4444; }
+  .iskoni-popup-btn.danger:hover { background: rgba(239, 68, 68, 0.15); }
+</style>
+
+<script>
+  (function() {
+    function getHistory() {
+      try {
+        const raw = localStorage.getItem('iskoni_watch_history');
+        return raw ? JSON.parse(raw) : [];
+      } catch (_) {
+        return [];
+      }
+    }
+
+    function saveHistory(list) {
+      localStorage.setItem('iskoni_watch_history', JSON.stringify(list));
+    }
+
+    function closePopup() {
+      const p = document.getElementById('iskoni-context-popup');
+      if (p) p.remove();
+    }
+
+    function openMenu(e, cardEl, cardTitle) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      closePopup();
+
+      const historyList = getHistory();
+      // Match by media title inside nested media object
+      const matchedEntry = historyList.find(entry => {
+        const m = entry.media || entry;
+        const t = (m.title || m.name || '').toLowerCase().trim();
+        return t === cardTitle.toLowerCase().trim() || cardTitle.toLowerCase().trim().includes(t);
+      }) || { media: { id: cardTitle, title: cardTitle } };
+
+      const mediaObj = matchedEntry.media || matchedEntry;
+      const targetId = String(mediaObj.id || matchedEntry.id || '');
+
+      const btn = e.currentTarget;
+      const rect = btn.getBoundingClientRect();
+
+      const popup = document.createElement('div');
+      popup.id = 'iskoni-context-popup';
+      popup.style.top = (rect.bottom + 6) + 'px';
+      popup.style.left = Math.min(window.innerWidth - 210, Math.max(12, rect.right - 190)) + 'px';
+
+      popup.onpointerdown = (ev) => ev.stopPropagation();
+      popup.onmousedown = (ev) => ev.stopPropagation();
+      popup.onclick = (ev) => ev.stopPropagation();
+
+      const actions = [
+        {
+          label: 'Play from beginning',
+          icon: '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>',
+          danger: false,
+          run: () => {
+            closePopup();
+            const list = getHistory();
+            const updated = list.map(entry => {
+              const m = entry.media || entry;
+              const mId = String(m.id || entry.id || '');
+              const mTitle = (m.title || m.name || '').toLowerCase().trim();
+              if ((targetId && mId === targetId) || (cardTitle && mTitle === cardTitle.toLowerCase().trim())) {
+                return { ...entry, progress: 0, currentTime: 0, time: 0, timestamp: 0 };
+              }
+              return entry;
+            });
+            saveHistory(updated);
+            const playTrigger = cardEl.querySelector('.relative') || cardEl;
+            playTrigger.click();
+          }
+        },
+        {
+          label: 'Add to My List',
+          icon: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>',
+          danger: false,
+          run: () => {
+            closePopup();
+            try {
+              let wlist = JSON.parse(localStorage.getItem('iskoni_watchlist') || '[]');
+              const exists = wlist.some(i => String(i.id) === targetId);
+              if (!exists) {
+                const imgEl = cardEl.querySelector('img');
+                const imgSrc = imgEl ? imgEl.src : '';
+                let posterPath = mediaObj.poster_path || '';
+                let backdropPath = mediaObj.backdrop_path || '';
+
+                if (!posterPath && imgSrc.includes('image.tmdb.org')) {
+                  posterPath = imgSrc.replace(/https?:\/\/image\.tmdb\.org\/t\/p\/[^\/]+/g, '');
+                }
+
+                const itemToAdd = {
+                  ...mediaObj,
+                  id: mediaObj.id || Date.now(),
+                  title: mediaObj.title || mediaObj.name || cardTitle,
+                  name: mediaObj.name || mediaObj.title || cardTitle,
+                  poster_path: posterPath,
+                  backdrop_path: backdropPath || posterPath,
+                  poster: posterPath ? ('https://image.tmdb.org/t/p/w500' + posterPath) : imgSrc,
+                  backdrop: backdropPath ? ('https://image.tmdb.org/t/p/original' + backdropPath) : imgSrc,
+                  media_type: mediaObj.media_type || (matchedEntry.season ? 'tv' : 'movie')
+                };
+                wlist.unshift(itemToAdd);
+                localStorage.setItem('iskoni_watchlist', JSON.stringify(wlist));
+              }
+            } catch (_) {}
+          }
+        },
+        {
+          label: 'Delete from history',
+          icon: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>',
+          danger: true,
+          run: () => {
+            closePopup();
+            // Delete from iskoni_watch_history matching entry.media.id or title
+            const list = getHistory();
+            const filtered = list.filter(entry => {
+              const m = entry.media || entry;
+              const mId = String(m.id || entry.id || '');
+              const mTitle = (m.title || m.name || '').toLowerCase().trim();
+              const idMatches = targetId && (mId === targetId);
+              const titleMatches = cardTitle && (mTitle === cardTitle.toLowerCase().trim());
+              return !idMatches && !titleMatches;
+            });
+            saveHistory(filtered);
+
+            cardEl.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+            cardEl.style.opacity = '0';
+            cardEl.style.transform = 'scale(0.85)';
+            setTimeout(() => cardEl.remove(), 200);
+          }
+        }
+      ];
+
+      actions.forEach(a => {
+        const row = document.createElement('button');
+        row.className = 'iskoni-popup-btn' + (a.danger ? ' danger' : '');
+        row.innerHTML = a.icon + ' <span>' + a.label + '</span>';
+        row.onclick = (ev) => {
+          ev.preventDefault();
+          ev.stopPropagation();
+          a.run();
+        };
+        popup.appendChild(row);
+      });
+
+      document.body.appendChild(popup);
+    }
+
+    document.addEventListener('mouseover', (e) => {
+      const card = e.target.closest('.group');
+      if (!card || card.querySelector('.iskoni-card-dot-btn')) return;
+
+      const isHistoryCard = card.textContent.includes('Click to resume') || card.querySelector('.bg-red-600') || card.querySelector('.bg-red-500');
+      if (!isHistoryCard) return;
+
+      const titleEl = card.querySelector('h4, h3, p.font-bold, p.font-semibold, .truncate');
+      const cardTitle = titleEl ? titleEl.textContent.trim() : '';
+
+      const dotBtn = document.createElement('button');
+      dotBtn.className = 'iskoni-card-dot-btn';
+      dotBtn.title = 'Options';
+      dotBtn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="2.2"/><circle cx="12" cy="4" r="2.2"/><circle cx="12" cy="20" r="2.2"/></svg>';
+
+      dotBtn.onpointerdown = (ev) => { ev.stopPropagation(); ev.stopImmediatePropagation(); };
+      dotBtn.onmousedown = (ev) => { ev.stopPropagation(); ev.stopImmediatePropagation(); };
+      dotBtn.onclick = (ev) => openMenu(ev, card, cardTitle);
+
+      const relativeParent = card.querySelector('.relative') || card;
+      relativeParent.appendChild(dotBtn);
+    });
+
+    document.addEventListener('pointerdown', (e) => {
+      if (!e.target.closest('#iskoni-context-popup') && !e.target.closest('.iskoni-card-dot-btn')) {
+        closePopup();
+      }
+    });
+  })();
+</script>
+
+
+
+
+
+<script>
+  (function() {
+    // Strips inline hiding styles to restore the default React navigation
+    function resetAppHeader() {
+      const headers = document.querySelectorAll('header, .absolute.top-0, .fixed.top-0, [class*="top-0"]');
+      headers.forEach(el => {
+        el.style.opacity = '';
+        el.style.pointerEvents = '';
+        el.style.transform = '';
+        el.style.transition = '';
+      });
+    }
+
+    // Monitor the DOM. If the player iframe unmounts, instantly restore the top bar.
+    const observer = new MutationObserver(() => {
+      if (!document.querySelector('iframe')) {
+        resetAppHeader();
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Ensure it's visible on load
+    document.addEventListener('DOMContentLoaded', resetAppHeader);
+
+    // Handle incoming messages from the player
+    window.addEventListener('message', (e) => {
+      if (!e.data) return;
+
+      if (e.data.type === 'TOGGLE_APP_FULLSCREEN') {
+        if (window.api && typeof window.api.toggleFullscreen === 'function') {
+          window.api.toggleFullscreen();
+        } else {
+          if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(() => {});
+          } else {
+            document.exitFullscreen().catch(() => {});
+          }
+        }
+      }
+
+      if (e.data.type === 'ISKONI_TOP_HOVER') {
+        // Prevent hiding the header if the player is already closed
+        if (!document.querySelector('iframe')) {
+          resetAppHeader();
+          return;
+        }
+
+        const headers = document.querySelectorAll('header, .absolute.top-0, .fixed.top-0, [class*="top-0"]');
+        headers.forEach(el => {
+          // Only animate the bar if it looks like the player's overlay header
+          if (el.textContent.includes('Server') || el.querySelector('select, button')) {
+            el.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+            if (e.data.nearTop) {
+              el.style.opacity = '1';
+              el.style.pointerEvents = 'auto';
+              el.style.transform = 'translateY(0)';
+            } else {
+              el.style.opacity = '0';
+              el.style.pointerEvents = 'none';
+              el.style.transform = 'translateY(-100%)';
+            }
+          }
+        });
+      }
+    });
+  })();
+</script>
+
+<!-- ISKONI_SEAMLESS_LOADER_START -->
+<style>
+  #iskoni-playback-shield {
+    position: fixed;
+    inset: 0;
+    background: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 45; /* Sits over the iframe but behind top header bar */
+    opacity: 1;
+    transition: opacity 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    pointer-events: none;
+  }
+  #iskoni-playback-shield.shield-hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  .iskoni-shield-spinner {
+    width: 36px;
+    height: 36px;
+    border: 3px solid rgba(239, 68, 68, 0.15);
+    border-top-color: #ef4444;
+    border-radius: 50%;
+    animation: iskoni-spin 0.65s linear infinite;
+  }
+  @keyframes iskoni-spin {
+    to { transform: rotate(360deg); }
+  }
+</style>
+
+<div id="iskoni-playback-shield" class="shield-hidden">
+  <div class="iskoni-shield-spinner"></div>
+</div>
+
+<script>
+  (function() {
+    const shield = document.getElementById('iskoni-playback-shield');
+    let isPlaying = false;
+
+    // Monitor when player mounts to activate continuous loading screen
+    const observer = new MutationObserver(() => {
+      const iframe = document.querySelector('iframe');
+      if (iframe) {
+        if (!isPlaying) {
+          shield.classList.remove('shield-hidden');
+          // Safety timeout to prevent infinite black overlay
+          setTimeout(() => { shield.classList.add('shield-hidden'); }, 3000);
+        }
+      } else {
+        // Player closed
+        isPlaying = false;
+        shield.classList.add('shield-hidden');
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Hide loader only when the player confirms video is rendering frames
+    window.addEventListener('message', (e) => {
+      if (!e.data) return;
+
+      if (e.data.type === 'PLAYER_EVENT') {
+        if (e.data.event === 'playing' || (e.data.event === 'timeupdate' && e.data.currentTime > 0.05)) {
+          isPlaying = true;
+          shield.classList.add('shield-hidden');
+        }
+      }
+    });
+  })();
+</script>
+<!-- ISKONI_SEAMLESS_LOADER_END -->
+
+<script id="iskoni-safe-settings-cleaner">
+  (function() {
+    function hideServerRow() {
+      // Locate the 'Default Streaming Engine' text label
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+      let node;
+      while ((node = walker.nextNode())) {
+        if (node.nodeValue && node.nodeValue.trim() === 'Default Streaming Engine') {
+          const el = node.parentElement;
+          if (el) {
+            // Find the immediate row container (which holds the label + select dropdown)
+            let row = el.closest('div.flex, [class*="flex"], [class*="setting"], [class*="row"]');
+            if (!row || row.id === 'root' || row.parentElement === document.body) {
+              row = el.parentElement ? el.parentElement.parentElement : null;
+            }
+            if (row && row.style.display !== 'none' && row.id !== 'root') {
+              row.style.setProperty('display', 'none', 'important');
+            }
+          }
+        }
+      }
+    }
+
+    // Safe trigger: only run on navigation clicks or tab changes without child mutation overhead
+    document.addEventListener('click', () => setTimeout(hideServerRow, 50));
+    window.addEventListener('popstate', () => setTimeout(hideServerRow, 50));
+    document.addEventListener('DOMContentLoaded', () => setTimeout(hideServerRow, 100));
+    setInterval(hideServerRow, 1000);
+  })();
+</script>
+
+<script id="iskoni-updater-ui-bridge">
+  (function() {
+    let latestDownloadUrl = 'https://github.com/faithpoovathingal/iskoni-releases/releases/latest';
+
+    // Intercept version.json fetch response to store exact download URL
+    const origFetch = window.fetch;
+    window.fetch = async function(...args) {
+      const res = await origFetch.apply(this, args);
+      const url = typeof args[0] === 'string' ? args[0] : (args[0] && args[0].url ? args[0].url : '');
+      if (url.includes('version.json')) {
+        try {
+          const clone = res.clone();
+          clone.json().then(data => {
+            if (data && data.downloadUrl) {
+              latestDownloadUrl = data.downloadUrl;
+            }
+          }).catch(() => {});
+        } catch (_) {}
+      }
+      return res;
+    };
+
+    function enhanceUpdateModal() {
+      // Find modal containing update text
+      const headings = document.querySelectorAll('h1, h2, h3, h4, h5, div, span');
+      for (const el of headings) {
+        const txt = (el.textContent || '').trim();
+        if (txt.startsWith('Update available:')) {
+          const modalBox = el.closest('[class*="modal"], [class*="card"], [class*="dialog"], div.bg-zinc-900, div.bg-neutral-900, div');
+          if (!modalBox || modalBox.dataset.updateEnhanced) continue;
+
+          // Find the single OK button
+          const okBtn = Array.from(modalBox.querySelectorAll('button')).find(b => (b.textContent || '').trim() === 'OK');
+          if (okBtn && !okBtn.dataset.enhanced) {
+            modalBox.dataset.updateEnhanced = 'true';
+            okBtn.dataset.enhanced = 'true';
+
+            // Container for action buttons
+            const btnGroup = okBtn.parentElement;
+            if (btnGroup) {
+              btnGroup.style.display = 'flex';
+              btnGroup.style.gap = '10px';
+              btnGroup.style.justifyContent = 'flex-end';
+              btnGroup.style.marginTop = '14px';
+
+              // 1. Change OK button to "Later"
+              okBtn.textContent = 'Later';
+              okBtn.style.background = 'rgba(255,255,255,0.1)';
+              okBtn.style.color = '#ccc';
+              okBtn.style.border = '1px solid rgba(255,255,255,0.15)';
+              okBtn.style.padding = '8px 16px';
+              okBtn.style.borderRadius = '6px';
+              okBtn.style.cursor = 'pointer';
+
+              // 2. Create "Update Now" action button
+              const updateBtn = document.createElement('button');
+              updateBtn.textContent = 'Update Now';
+              updateBtn.style.background = '#3b82f6';
+              updateBtn.style.color = '#ffffff';
+              updateBtn.style.fontWeight = '600';
+              updateBtn.style.border = 'none';
+              updateBtn.style.padding = '8px 18px';
+              updateBtn.style.borderRadius = '6px';
+              updateBtn.style.cursor = 'pointer';
+              updateBtn.style.transition = 'all 0.15s ease';
+
+              updateBtn.onclick = async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                updateBtn.textContent = 'Downloading...';
+                updateBtn.disabled = true;
+                updateBtn.style.opacity = '0.7';
+
+                try {
+                  const { ipcRenderer } = require('electron');
+                  const result = await ipcRenderer.invoke('DOWNLOAD_AND_INSTALL_PKG', latestDownloadUrl);
+                  if (!result || !result.success) {
+                    // Fallback to browser if direct install stream fails
+                    await ipcRenderer.invoke('OPEN_UPDATE_URL', latestDownloadUrl);
+                  }
+                  updateBtn.textContent = 'Opening Installer...';
+                } catch (_) {
+                  window.open(latestDownloadUrl, '_blank');
+                  updateBtn.textContent = 'Opened in Browser';
+                }
+              };
+
+              btnGroup.insertBefore(updateBtn, okBtn);
+            }
+          }
+        }
+      }
+    }
+
+    const obs = new MutationObserver(enhanceUpdateModal);
+    obs.observe(document.body, { childList: true, subtree: true });
+    setInterval(enhanceUpdateModal, 400);
+  })();
+</script>
+</body>
+</html>

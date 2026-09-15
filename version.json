@@ -1,0 +1,7 @@
+{
+  "version": "1.0.8",
+  "name": "ISKONI Desktop v1.0.8",
+  "notes": "• Playback Pipeline: Stabilized streaming engine using verified high-performance providers (VidLink and Movy), eliminating black-screen loading errors.\n• UI & Navigation: Fixed card hover states across media feeds and synchronized version indicators throughout Settings and update channels.\n• Distribution Footprint: Stripped unnecessary development bundles to reduce installer package size back to ~139 MB.",
+  "pub_date": "2026-09-15T00:00:00Z",
+  "downloadUrl": "https://github.com/faithpoovathingal/iskoni-releases/releases/download/v1.0.8/ISKONI_1.0.8.pkg"
+}
