@@ -2,7 +2,7 @@
 
   <img src="https://raw.githubusercontent.com/faithpoovathingal/iskoni-releases/main/assets/logo.png" alt="ISKONI Logo" width="280" height="100" style="border-radius: 45px; box-shadow: 0 10px 30px;" onerror="this.src='https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=200&auto=format&fit=crop&q=80'" />
 
-  # ISKONI for macOS
+  # ISKONI
   
   **A high-performance, lightweight cinema & TV streaming desktop client.**
 
@@ -75,6 +75,12 @@
 ### Option 2: DMG Disk Image
 1. Download **`ISKONI_1.0.8.dmg`**.
 2. Double-click the DMG and drag **ISKONI.app** into `/Applications`.
+
+### Option 3: EXE Installer (Windows OS Package)
+1. Open the **[Latest Release](https://github.com/faithpoovathingal/iskoni-releases/releases/latest)** page.
+2. Download **`ISKONI_1.0.8.exe`**.
+3. **Double-Click (or Right Click > Open)** the downloaded `.exe` file and wait for the installer to load.
+4. Enjoy.
 
 > **Gatekeeper Notice:** If macOS warns that the app cannot be opened because it is from an unidentified developer, right-click the app in `/Applications`, click **Open**, and confirm **Open** in the prompt. You can also run:
 > ```bash
