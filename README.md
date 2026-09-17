@@ -1,8 +1,6 @@
 <div align="center">
 
   <img src="https://raw.githubusercontent.com/faithpoovathingal/iskoni-releases/main/assets/logo.png" alt="ISKONI Logo" width="280" height="100" style="border-radius: 45px; box-shadow: 0 10px 30px;" onerror="this.src='https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=200&auto=format&fit=crop&q=80'" />
-
-  # ISKONI
   
   **A high-performance, lightweight cinema & TV streaming desktop client.**
 
