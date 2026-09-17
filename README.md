@@ -7,13 +7,17 @@
   **A high-performance, lightweight cinema & TV streaming desktop client.**
 
   [![Latest Release](https://img.shields.io/github/v/release/faithpoovathingal/iskoni-releases?color=E50914&label=Version&style=for-the-badge)](https://github.com/faithpoovathingal/iskoni-releases/releases/latest)
-  [![Platform](https://img.shields.io/badge/Platform-macOS%20Apple%20Silicon%20(M1%2FM2%2FM3%2FM4)-black?style=for-the-badge&logo=apple)](https://github.com/faithpoovathingal/iskoni-releases/releases/latest)
-  [![License](https://img.shields.io/badge/Status-Active%20v1.0.8-red?style=for-the-badge)](https://github.com/faithpoovathingal/iskoni-releases)
+  [![Platform Windows](https://img.shields.io/badge/Platform-Windows%2010%2F11%20(x64)-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/faithpoovathingal/iskoni-releases/releases/latest)
+  [![Platform macOS](https://img.shields.io/badge/Platform-macOS%20Apple%20Silicon%20(M1%2FM2%2FM3%2FM4)-black?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/faithpoovathingal/iskoni-releases/releases/latest)
+  [![Status](https://img.shields.io/badge/Status-Active%20v1.0.8-red?style=for-the-badge)](https://github.com/faithpoovathingal/iskoni-releases)
 
   <br />
 
   <a href="https://github.com/faithpoovathingal/iskoni-releases/releases/latest">
-    <img src="https://img.shields.io/badge/Download_Installer_(.pkg)-E50914?style=for-the-badge&logo=apple&logoColor=white" height="40" alt="Download PKG" />
+    <img src="https://img.shields.io/badge/Download_Windows_Setup_(.exe)-0078D6?style=for-the-badge&logo=windows&logoColor=white" height="40" alt="Download Windows EXE" />
+  </a>
+  <a href="https://github.com/faithpoovathingal/iskoni-releases/releases/latest">
+    <img src="https://img.shields.io/badge/Download_macOS_Installer_(.pkg)-E50914?style=for-the-badge&logo=apple&logoColor=white" height="40" alt="Download PKG" />
   </a>
   <a href="https://github.com/faithpoovathingal/iskoni-releases/releases/latest">
     <img src="https://img.shields.io/badge/Download_Disk_Image_(.dmg)-1f2937?style=for-the-badge&logo=apple&logoColor=white" height="40" alt="Download DMG" />
@@ -64,25 +68,32 @@
 
 ---
 
-## 📥 Installation Guide (macOS)
+## 📥 Installation Guide
 
-### Option 1: PKG Installer (Recommended)
+### 🪟 Windows (10 / 11)
+
+1. Open the **[Latest Release](https://github.com/faithpoovathingal/iskoni-releases/releases/latest)** page.
+2. Download **`ISKONI_1.0.8.exe`**.
+3. Launch the installer.  
+   *(If Windows Defender SmartScreen shows a prompt, click **More info** → **Run anyway**).*
+4. Select your installation folder and choose your desktop shortcut preferences.
+5. Launch **ISKONI** directly from your Desktop or Start Menu.
+
+---
+
+### 🍎 macOS (Apple Silicon)
+
+#### Option 1: PKG Installer (Recommended)
 1. Open the **[Latest Release](https://github.com/faithpoovathingal/iskoni-releases/releases/latest)** page.
 2. Download **`ISKONI_1.0.8.pkg`**.
 3. **Right-Click (or Control + Click)** the downloaded `.pkg` file and select **Open**.
-4. Follow the installer steps to place ISKONI into your `/Applications` directory.
+4. Follow the installation steps to place ISKONI into your `/Applications` directory.
 
-### Option 2: DMG Disk Image
+#### Option 2: DMG Disk Image
 1. Download **`ISKONI_1.0.8.dmg`**.
 2. Double-click the DMG and drag **ISKONI.app** into `/Applications`.
 
-### Option 3: EXE Installer (Windows OS Package)
-1. Open the **[Latest Release](https://github.com/faithpoovathingal/iskoni-releases/releases/latest)** page.
-2. Download **`ISKONI_1.0.8.exe`**.
-3. **Double-Click (or Right Click > Open)** the downloaded `.exe` file and wait for the installer to load.
-4. Enjoy.
-
-> **Gatekeeper Notice:** If macOS warns that the app cannot be opened because it is from an unidentified developer, right-click the app in `/Applications`, click **Open**, and confirm **Open** in the prompt. You can also run:
+> **Gatekeeper Notice:** If macOS warns that the app cannot be opened because it is from an unidentified developer, right-click the app in `/Applications`, click **Open**, and confirm **Open** in the dialog. Alternatively, remove the quarantine flag via Terminal:
 > ```bash
 > xattr -cr /Applications/ISKONI.app
 > ```
