@@ -1,7 +1,8 @@
 {
-  "version": "1.0.8",
-  "name": "ISKONI Desktop v1.0.8",
-  "notes": "• Playback Pipeline: Stabilized streaming engine using verified high-performance providers (VidLink and Movy), eliminating black-screen loading errors.\n• UI & Navigation: Fixed card hover states across media feeds and synchronized version indicators throughout Settings and update channels.\n• Distribution Footprint: Stripped unnecessary development bundles to reduce installer package size back to ~139 MB.",
-  "pub_date": "2026-09-15T00:00:00Z",
-  "downloadUrl": "https://github.com/faithpoovathingal/iskoni-releases/releases/download/v1.0.8/ISKONI_1.0.8.pkg"
+  "version": "1.0.9",
+  "name": "ISKONI Desktop v1.0.9-beta6",
+  "notes": "• Home & Visual Overhaul: Dynamic hero carousel, frosted glass top navigation, and expandable hover search bar.\n• Playback & Sources: Expanded streaming pipeline with Luna, Astra, and Movy providers alongside revamped action buttons.\n• Profiles & Cloud Sync: Live Supabase profile sync with custom display names, avatar presets, and dark glass modal UI.\n• Platform Distribution: Production Windows NSIS installer (.exe) and macOS (.pkg/.dmg) packages with dedicated icon assets.",
+  "pub_date": "2026-09-18T18:00:00Z",
+  "downloadUrl": "https://github.com/faithpoovathingal/iskoni-releases/releases/download/v1.0.9/ISKONI_1.0.9.pkg",
+  "downloadUrlWin": "https://github.com/faithpoovathingal/iskoni-releases/releases/download/v1.0.9/ISKONI.Setup.1.0.9.exe"
 }
