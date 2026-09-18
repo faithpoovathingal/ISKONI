@@ -1,112 +1,135 @@
 <div align="center">
 
-  <img src="https://raw.githubusercontent.com/faithpoovathingal/iskoni-releases/main/assets/logo.png" alt="ISKONI Logo" width="280" height="100" style="border-radius: 45px; box-shadow: 0 10px 30px;" onerror="this.src='https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=200&auto=format&fit=crop&q=80'" />
-  
-  **A high-performance, lightweight cinema & TV streaming desktop client.**
+  <br />
+  <img src="https://raw.githubusercontent.com/faithpoovathingal/iskoni-releases/main/assets/logo.png" alt="ISKONI Logo" width="320" height="110" style="border-radius: 28px; box-shadow: 0 20px 50px rgba(0,0,0,0.8);" onerror="this.src='https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=320&auto=format&fit=crop&q=80'" />
 
-  [![Latest Release](https://img.shields.io/github/v/release/faithpoovathingal/iskoni-releases?color=E50914&label=Version&style=for-the-badge)](https://github.com/faithpoovathingal/iskoni-releases/releases/latest)
-  [![Platform Windows](https://img.shields.io/badge/Platform-Windows%2010%2F11%20(x64)-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/faithpoovathingal/iskoni-releases/releases/latest)
-  [![Platform macOS](https://img.shields.io/badge/Platform-macOS%20Apple%20Silicon%20(M1%2FM2%2FM3%2FM4)-black?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/faithpoovathingal/iskoni-releases/releases/latest)
-  [![Status](https://img.shields.io/badge/Status-Active%20v1.0.8-red?style=for-the-badge)](https://github.com/faithpoovathingal/iskoni-releases)
+  <br /><br />
+
+  <h1><b>I S K O N I</b></h1>
+  <p><b>A high-performance, native-feel desktop cinema & episodic streaming suite.</b></p>
+
+  <div>
+    <a href="https://github.com/faithpoovathingal/iskoni-releases/releases/latest"><img src="https://img.shields.io/github/v/release/faithpoovathingal/iskoni-releases?color=E50914&label=Release&style=for-the-badge" alt="Latest Release" /></a>
+    <a href="https://github.com/faithpoovathingal/iskoni-releases/releases/latest"><img src="https://img.shields.io/badge/Windows-10%20%7C%2011%20(x64)-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows" /></a>
+    <a href="https://github.com/faithpoovathingal/iskoni-releases/releases/latest"><img src="https://img.shields.io/badge/macOS-Apple%20Silicon%20(M%20Series)-000000?style=for-the-badge&logo=apple&logoColor=white" alt="macOS" /></a>
+    <a href="https://github.com/faithpoovathingal/iskoni-releases"><img src="https://img.shields.io/badge/Status-v1.0.9--beta6-10b981?style=for-the-badge" alt="Build Status" /></a>
+  </div>
 
   <br />
 
-  <a href="https://github.com/faithpoovathingal/iskoni-releases/releases/latest">
-    <img src="https://img.shields.io/badge/Download_Windows_Setup_(.exe)-0078D6?style=for-the-badge&logo=windows&logoColor=white" height="40" alt="Download Windows EXE" />
-  </a>
-  <a href="https://github.com/faithpoovathingal/iskoni-releases/releases/latest">
-    <img src="https://img.shields.io/badge/Download_macOS_Installer_(.pkg)-E50914?style=for-the-badge&logo=apple&logoColor=white" height="40" alt="Download PKG" />
-  </a>
-  <a href="https://github.com/faithpoovathingal/iskoni-releases/releases/latest">
-    <img src="https://img.shields.io/badge/Download_Disk_Image_(.dmg)-1f2937?style=for-the-badge&logo=apple&logoColor=white" height="40" alt="Download DMG" />
-  </a>
+  <div>
+    <a href="https://github.com/faithpoovathingal/iskoni-releases/releases/download/v1.0.9/ISKONI_1.0.9.exe">
+      <img src="https://img.shields.io/badge/Download-Windows%20Installer%20(.exe)-0078D6?style=for-the-badge&logo=windows&logoColor=white" height="38" alt="Download Windows Installer" />
+    </a>
+    &nbsp;
+    <a href="https://github.com/faithpoovathingal/iskoni-releases/releases/download/v1.0.9/ISKONI_1.0.9.pkg">
+      <img src="https://img.shields.io/badge/Download-macOS%20Package%20(.pkg)-E50914?style=for-the-badge&logo=apple&logoColor=white" height="38" alt="Download macOS PKG" />
+    </a>
+    &nbsp;
+    <a href="https://github.com/faithpoovathingal/iskoni-releases/releases/download/v1.0.9/ISKONI_1.0.9.dmg">
+      <img src="https://img.shields.io/badge/Download-macOS%20Disk%20Image%20(.dmg)-1f2937?style=for-the-badge&logo=apple&logoColor=white" height="38" alt="Download macOS DMG" />
+    </a>
+  </div>
 
 </div>
 
----
-
-## 📽️ About ISKONI
-
-**ISKONI** is an Electron and React-powered desktop streaming client engineered for clean, bufferless entertainment. Built with a custom native HLS playback engine, seamless TMDB discovery, persistent subtitle customization, direct multi-server failover resolvers, dynamic in-frame volume control, and automated background update delivery.
+<br />
 
 ---
 
-## ✨ Key Features
+### Overview
 
-- 🎬 **Custom Built-In Native Player:** Fully integrated direct HLS player delivering ad-free playback, live buffer telemetry, precise scrubbing, and adaptive quality switching up to 1080p HD.
-- 🔊 **Dynamic In-Player Volume & Audio Slider:** Native volume slider and mute controls injected directly into player streams with state persistence across playback sessions.
-- 💬 **Advanced Subtitle Engine & Memory:**
-  - **Smart Default:** Prioritizes **English 3** tracks automatically on launch, falling back cleanly to standard English when needed.
-  - **Cross-Session Memory:** Saves your subtitle selection to persistent local storage across resumes, restarts, and app updates.
-  - **Style & Sync Customizer:** In-player calibration for timing offset (±0.5s), font sizing (S, M, L, XL), text color palettes, and box background opacity.
-- ⚡ **Direct Multi-Server Pipeline:** Instant failover across high-speed streaming CDNs with streamlined badges: **VidLink (Primary)**, **Movy (Fast)**, and **CineSRC (Mirror)**.
-- ⏭️ **Smart Up Next Prompt:** Automated card preview with episode artwork and a 15-second countdown during the final 45 seconds of a TV show.
-- 🛑 **"Stay" Credit Mode:** Dismiss auto-advance prompts with one click to finish watching post-credit scenes uninterrupted.
-- 📺 **In-Player Episode Drawer:** Browse seasons and full episode lists with rich artwork without exiting active playback.
-- 🖥️ **Aspect Ratio & Display Control:** Instant aspect-ratio cycling (`contain`, `cover`, `fill`) with keybind support and clean fullscreen integration.
-- 🔖 **My List & Watchlist:** Bookmark movies and TV shows for instant offline access.
-- 🕒 **Precision Resume Engine:** Automatically saves playback progress to pick up seamlessly where you left off.
-- 🔄 **Direct One-Click OTA Updates:** In-app update notifications with a dedicated **Update Now** action that downloads and launches new installers automatically.
-- 🔍 **Multi-Language Discovery:** Fast filtering across Malayalam, Hindi, Tamil, Telugu, English, Korean, and Japanese catalogs.
+**ISKONI** is an ultra-fast desktop streaming workstation combining custom low-latency HLS pipeline engineering with deep UI polish. Powered by Electron and React, ISKONI delivers instant hardware-accelerated playback, multi-mirror source resolution, real-time cross-device cloud synchronization, and smart platform-tailored updates without ads or clutter.
 
 ---
 
-## ⌨️ Media Shortcuts
+### What's New in v1.0.9
 
-| Key | Action |
+| Module | Enhancements |
 | :--- | :--- |
-| <kbd>Space</kbd> / <kbd>K</kbd> | Play / Pause |
-| <kbd>←</kbd> / <kbd>→</kbd> | Seek Backward / Forward 10 Seconds |
-| <kbd>A</kbd> | Cycle Aspect Ratio (`contain` / `cover` / `fill`) |
-| <kbd>F</kbd> | Toggle Fullscreen |
-| <kbd>T</kbd> | Toggle / Preview Up Next Card |
+| **Hero Carousel** | Auto-advancing featured banner with dynamic backdrop blurring, rich meta cards, and responsive pagination indicators. |
+| **Cloud Accounts** | Powered by Supabase. Sync display names, avatar presets, and watch history across all machines in real time. |
+| **Avatar Studio** | Instant preset picker (Scorpion, Cat, Dog, Wolf, Lion, Eagle, Phoenix, Dragon) with automatic name initials generation. |
+| **Interactive Search** | Dynamic hover-expand search pill: compact circular glass trigger at rest, expansive input on hover/focus. |
+| **Server Engine** | Added high-bandwidth CDNs: **Luna**, **Astra**, and **Movy** with zero-buffer multi-mirror failover. |
+| **Frosted Top Navigation** | Ultra-thin backdrop glassmorphism; settings moved to a dedicated right-aligned circular quick action. |
+| **Action Layout** | Tactile redesign for **Play** and **+ Add to Watchlist** buttons with expanded catalog poster margins. |
+| **Platform Packaging** | Native NSIS installer targeting `Program Files` with `icon.ico` branding alongside silent macOS packages. |
+
+---
+
+### Key Capabilities
+
+* **Engineered HLS Engine:** Direct buffer streaming with zero mid-roll injections, live playback telemetry, precision timeline scrubbing, and adaptive 1080p HD stream switching.
+* **Persistent Audio & Volume Control:** Native in-frame logarithmic volume slider and quick mute with cross-session volume retention.
+* **Comprehensive Subtitle Customizer:**
+  * Auto-selects **English 3** priority tracks with silent fallback to primary English.
+  * Adjust timing offset ($\pm0.5\text{s}$ calibration steps), text size (S, M, L, XL), palette hues, and background bounding opacity.
+  * Local storage synchronization ensures custom styling persists through restarts and OTA updates.
+* **Episodic Flow & Drawers:**
+  * **Up Next Card:** Auto-renders episode artwork with an interactive 15-second countdown during the final 45 seconds.
+  * **Credit Shield ("Stay" Mode):** One-click dismissal of episode auto-advance to enjoy post-credit sequences cleanly.
+  * **In-Player Episode Drawer:** Browse seasons and synopsis data without interrupting live playback.
+* **Aspect Scaling:** Instant hotkey cycling across `contain`, `cover`, and `fill` viewports.
+* **Cross-Language Catalogs:** Curated filtering across Malayalam, Hindi, Tamil, Telugu, English, Korean, and Japanese media feeds.
+* **Intelligent OTA Updates:** Background version checks that automatically deliver OS-specific packages (`.exe` for Windows, `.pkg`/`.dmg` for macOS).
+
+---
+
+### Keyboard Shortcuts
+
+| Shortcut | Action |
+| :--- | :--- |
+| <kbd>Space</kbd> / <kbd>K</kbd> | Toggle Play / Pause |
+| <kbd>←</kbd> / <kbd>→</kbd> | Seek Backward / Forward 10s |
+| <kbd>A</kbd> | Cycle Aspect Ratio (`contain` • `cover` • `fill`) |
+| <kbd>F</kbd> | Toggle Native Fullscreen |
+| <kbd>T</kbd> | Trigger / Dismiss Up Next Card |
 | <kbd>N</kbd> | Jump to Next Episode |
 | <kbd>P</kbd> | Jump to Previous Episode |
-| <kbd>Esc</kbd> | Close Episode Drawer / Exit Fullscreen / Exit Player |
+| <kbd>Esc</kbd> | Exit Episode Drawer / Fullscreen / Video Player |
 
 ---
 
-## 📥 Installation Guide
+### Installation
 
-### 🪟 Windows (10 / 11)
+#### Windows (10 / 11)
 
-1. Open the **[Latest Release](https://github.com/faithpoovathingal/iskoni-releases/releases/latest)** page.
-2. Download **`ISKONI_1.0.8.exe`**.
-3. Launch the installer.  
-   *(If Windows Defender SmartScreen shows a prompt, click **More info** → **Run anyway**).*
-4. Select your installation folder and choose your desktop shortcut preferences.
-5. Launch **ISKONI** directly from your Desktop or Start Menu.
+1. Grab **`ISKONI_1.0.9.exe`** from the [Latest Release](https://github.com/faithpoovathingal/iskoni-releases/releases/latest).
+2. Run the installer. If prompted by Windows Defender SmartScreen, select **More info** → **Run anyway**.
+3. The setup automatically installs ISKONI to your `Program Files` directory and registers clean Start Menu and Desktop shortcuts.
 
----
+#### macOS (Apple Silicon M1 / M2 / M3 / M4)
 
-### 🍎 macOS (Apple Silicon)
+* **PKG Installer (Recommended):**  
+  Download **`ISKONI_1.0.9.pkg`**. Right-click (or <kbd>Control</kbd> + Click) the file, select **Open**, and complete the installation wizard to place ISKONI into `/Applications`.
+* **DMG Disk Image:**  
+  Download **`ISKONI_1.0.9.dmg`**, double-click the image, and drag **ISKONI.app** into your `/Applications` folder.
 
-#### Option 1: PKG Installer (Recommended)
-1. Open the **[Latest Release](https://github.com/faithpoovathingal/iskoni-releases/releases/latest)** page.
-2. Download **`ISKONI_1.0.8.pkg`**.
-3. **Right-Click (or Control + Click)** the downloaded `.pkg` file and select **Open**.
-4. Follow the installation steps to place ISKONI into your `/Applications` directory.
-
-#### Option 2: DMG Disk Image
-1. Download **`ISKONI_1.0.8.dmg`**.
-2. Double-click the DMG and drag **ISKONI.app** into `/Applications`.
-
-> **Gatekeeper Notice:** If macOS warns that the app cannot be opened because it is from an unidentified developer, right-click the app in `/Applications`, click **Open**, and confirm **Open** in the dialog. Alternatively, remove the quarantine flag via Terminal:
+> **Gatekeeper Resolution:** If macOS prompts that the package is from an unidentified developer, right-click the app in `/Applications`, choose **Open**, and confirm. Alternatively, clear the quarantine flag via Terminal:
 > ```bash
 > xattr -cr /Applications/ISKONI.app
 > ```
 
 ---
 
-## 👨‍💻 Developer & Credits
+### Tech Stack
 
-Designed and engineered by **Faith Poovathingal**.
-
-- **GitHub:** [@faithpoovathingal](https://github.com/faithpoovathingal)
-- **Architecture:** Electron, React, TypeScript, Tailwind CSS, Hls.js, TMDB API
+* **Shell & Core:** Electron, Node.js
+* **Interface:** React, Tailwind CSS, Lucide Icons
+* **Data & Cloud Sync:** Supabase (Auth, Profiles, Watch History, RLS)
+* **Video Pipeline:** Hls.js, Custom Telemetry Controller
+* **Metadata Engine:** The Movie Database (TMDB) API
+* **Packaging:** Electron Builder, NSIS (Windows x64), Native macOS Toolchain
 
 ---
 
 <div align="center">
-  <sub>Disclaimer: ISKONI is built purely as an educational media aggregator and client. All media metadata is provided via the TMDB API and dynamic third-party resolvers.</sub>
+
+  **Engineered by Faith Poovathingal**  
+  [![GitHub](https://img.shields.io/badge/GitHub-faithpoovathingal-181717?style=flat-square&logo=github)](https://github.com/faithpoovathingal)
+
+  <br />
+  <sub>ISKONI is a media aggregator and stream client intended for educational and research usage. All media index data is retrieved via public APIs and third-party mirrors.</sub>
+
 </div>
