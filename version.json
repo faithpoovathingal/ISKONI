@@ -4,5 +4,5 @@
   "notes": "• Home & Visual Overhaul: Dynamic hero carousel, frosted glass top navigation, and expandable hover search bar.\n• Playback & Sources: Expanded streaming pipeline with Luna, Astra, and Movy providers alongside revamped action buttons.\n• Profiles & Cloud Sync: Live Supabase profile sync with custom display names, avatar presets, and dark glass modal UI.\n• Platform Distribution: Production Windows NSIS installer (.exe) and macOS (.pkg/.dmg) packages with dedicated icon assets.",
   "pub_date": "2026-09-18T18:00:00Z",
   "downloadUrl": "https://github.com/faithpoovathingal/iskoni-releases/releases/download/v1.0.9/ISKONI_1.0.9.pkg",
-  "downloadUrlWin": "https://github.com/faithpoovathingal/iskoni-releases/releases/download/v1.0.9/ISKONI.Setup.1.0.9.exe"
+  "downloadUrlWin": "https://github.com/faithpoovathingal/iskoni-releases/releases/download/v1.0.9/ISKONI_1.0.9.exe"
 }
