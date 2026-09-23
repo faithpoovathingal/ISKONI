@@ -12,7 +12,7 @@
     <a href="https://github.com/faithpoovathingal/iskoni-releases/releases/latest"><img src="https://img.shields.io/github/v/release/faithpoovathingal/iskoni-releases?color=E50914&label=Release&style=for-the-badge" alt="Latest Release" /></a>
     <a href="https://github.com/faithpoovathingal/iskoni-releases/releases/latest"><img src="https://img.shields.io/badge/Windows-10%20%7C%2011%20(x64)-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows" /></a>
     <a href="https://github.com/faithpoovathingal/iskoni-releases/releases/latest"><img src="https://img.shields.io/badge/macOS-Apple%20Silicon%20(M%20Series)-000000?style=for-the-badge&logo=apple&logoColor=white" alt="macOS" /></a>
-    <a href="https://github.com/faithpoovathingal/iskoni-releases"><img src="https://img.shields.io/badge/Status-v1.0.9--beta6-10b981?style=for-the-badge" alt="Build Status" /></a>
+    <a href="https://github.com/faithpoovathingal/iskoni-releases"><img src="https://img.shields.io/badge/Status-v1.0.9-10b981?style=for-the-badge" alt="Build Status" /></a>
   </div>
 
   <br />
